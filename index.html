@@ -1,159 +1,169 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>WANS FISHIT</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WANS FISHIT</title>
 
-  <style>
-    * {
-      box-sizing: border-box;
-      font-family: 'Poppins', sans-serif;
-    }
+<style>
+* {
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
 
-    body {
-      margin: 0;
-      min-height: 100vh;
-      background:
-        linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)),
-        url("bg-roblox.jpg") center / cover no-repeat;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 20px;
-    }
+body {
+  margin: 0;
+  min-height: 100vh;
+  background:
+    linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)),
+    url("bg-roblox.jpg") center / cover no-repeat;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
 
-    .card {
-      width: 100%;
-      max-width: 380px;
-      background: rgba(255,255,255,0.18);
-      backdrop-filter: blur(15px);
-      border-radius: 18px;
-      padding: 22px;
-      text-align: center;
-      color: white;
-      box-shadow: 0 10px 35px rgba(0,0,0,.4);
-      animation: fadeUp .6s ease;
-    }
+/* CARD */
+.card {
+  width: 100%;
+  max-width: 380px;
+  background: rgba(255,255,255,0.18);
+  backdrop-filter: blur(15px);
+  border-radius: 18px;
+  padding: 22px;
+  text-align: center;
+  color: white;
+  box-shadow: 0 10px 35px rgba(0,0,0,.4);
+}
 
-    @keyframes fadeUp {
-      from {opacity: 0; transform: translateY(20px);}
-      to {opacity: 1; transform: translateY(0);}
-    }
+/* LOGO */
+.logo-wrap {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px;
+}
 
-    .logo-wrap {
-      display: flex;
-      justify-content: center;
-      margin-bottom: 10px;
-    }
+.logo-wrap img {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  border: 3px solid white;
+  object-fit: cover;
+}
 
-    .logo-wrap img {
-      width: 90px;
-      height: 90px;
-      border-radius: 50%;
-      border: 3px solid white;
-      background: #fff;
-      object-fit: cover;
-    }
+/* TEXT */
+h1 {
+  margin: 10px 0;
+  font-size: 22px;
+}
 
-    h1 {
-      margin: 10px 0;
-      font-size: 22px;
-      letter-spacing: 1px;
-    }
+.warning {
+  color: #ff6b6b;
+  font-weight: 600;
+  margin: 8px 0;
+}
 
-    .warning {
-      color: #ff6b6b;
-      font-weight: 600;
-      margin: 8px 0;
-      font-size: 13px;
-    }
+.info {
+  font-size: 13px;
+  opacity: .9;
+  margin-bottom: 15px;
+}
 
-    .info {
-      font-size: 13px;
-      opacity: 0.9;
-      margin-bottom: 15px;
-    }
+/* BUTTON LIST */
+.price button {
+  width: 100%;
+  padding: 12px;
+  margin: 6px 0;
+  border: none;
+  border-radius: 10px;
+  font-weight: 600;
+  cursor: pointer;
+  background: #f1f1f1;
+}
 
-    .price button {
-      width: 100%;
-      padding: 12px;
-      margin: 6px 0;
-      border: none;
-      border-radius: 10px;
-      font-weight: 600;
-      cursor: pointer;
-      background: #f1f1f1;
-      transition: .2s;
-    }
+.price button.active {
+  background: #2563eb;
+  color: white;
+}
 
-    .price button.active {
-      background: #2563eb;
-      color: white;
-    }
+/* PAY BUTTON */
+.pay-btn {
+  margin-top: 15px;
+  padding: 14px;
+  border-radius: 10px;
+  border: none;
+  background: #2563eb;
+  color: white;
+  font-weight: 700;
+  width: 100%;
+  opacity: .5;
+  pointer-events: none;
+}
 
-    .pay-btn {
-      margin-top: 15px;
-      padding: 14px;
-      border-radius: 10px;
-      background: #2563eb;
-      color: white;
-      font-weight: 700;
-      border: none;
-      width: 100%;
-      opacity: .5;
-      pointer-events: none;
-      transition: .2s;
-    }
+.pay-btn.active {
+  opacity: 1;
+  pointer-events: auto;
+}
 
-    .pay-btn.active {
-      opacity: 1;
-      pointer-events: auto;
-    }
+/* NOTE */
+.note {
+  font-size: 12px;
+  margin-top: 10px;
+  opacity: .9;
+}
 
-    .note {
-      font-size: 12px;
-      margin-top: 10px;
-      opacity: .9;
-    }
+/* SOCIAL */
+.social {
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+  gap: 14px;
+}
 
-    .social {
-      margin-top: 10px;
-      display: flex;
-      justify-content: center;
-      gap: 14px;
-    }
+.social img {
+  width: 22px;
+}
 
-    .social img {
-      width: 22px;
-    }
+/* MODAL */
+.modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.7);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
 
-    /* Animasi klik */
-    .ripple {
-      position: relative;
-      overflow: hidden;
-    }
+.modal-box {
+  background: #1f2937;
+  color: white;
+  padding: 20px;
+  border-radius: 14px;
+  width: 90%;
+  max-width: 320px;
+  text-align: center;
+}
 
-    .ripple::after {
-      content: "";
-      position: absolute;
-      width: 120%;
-      height: 120%;
-      background: rgba(255,255,255,0.4);
-      border-radius: 50%;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%) scale(0);
-      animation: ripple 0.5s ease-out;
-    }
+.modal button {
+  margin-top: 10px;
+  padding: 10px;
+  width: 100%;
+  border-radius: 8px;
+  border: none;
+  font-weight: bold;
+}
 
-    @keyframes ripple {
-      to {
-        transform: translate(-50%, -50%) scale(1);
-        opacity: 0;
-      }
-    }
-  </style>
+.btn-cancel {
+  background: #444;
+  color: white;
+}
+
+.btn-ok {
+  background: #2563eb;
+  color: white;
+}
+</style>
 </head>
 
 <body>
@@ -174,11 +184,11 @@
   </div>
 
   <div class="price">
-    <button onclick="pilih(150000)">Foto A - Rp150.000</button>
-    <button onclick="pilih(100000)">Foto B - Rp100.000</button>
-    <button onclick="pilih(50000)">Foto C - Rp50.000</button>
-    <button onclick="pilih(25000)">Foto D - Rp25.000</button>
-    <button onclick="pilih(10000)">Foto E - Rp10.000</button>
+    <button onclick="pilih(150000)">Foto A – Rp150.000</button>
+    <button onclick="pilih(100000)">Foto B – Rp100.000</button>
+    <button onclick="pilih(50000)">Foto C – Rp50.000</button>
+    <button onclick="pilih(25000)">Foto D – Rp25.000</button>
+    <button onclick="pilih(10000)">Foto E – Rp10.000</button>
   </div>
 
   <button id="payBtn" class="pay-btn">PILIH NOMINAL DULU</button>
@@ -199,34 +209,41 @@
 
 </div>
 
+<!-- MODAL -->
+<div class="modal" id="confirmModal">
+  <div class="modal-box">
+    <h3>⚠️ Konfirmasi</h3>
+    <p>Pastikan nominal sesuai sebelum melanjutkan.</p>
+    <button class="btn-cancel" onclick="closeModal()">Batal</button>
+    <button class="btn-ok" onclick="goPay()">Lanjutkan</button>
+  </div>
+</div>
+
 <script>
 let selected = 0;
 
 function pilih(nominal) {
   selected = nominal;
-
-  document.querySelectorAll('.price button').forEach(btn => {
-    btn.classList.remove('active');
-    btn.classList.remove('ripple');
-  });
-
+  document.querySelectorAll('.price button').forEach(btn => btn.classList.remove('active'));
   event.target.classList.add('active');
-  event.target.classList.add('ripple');
 
-  const btn = document.getElementById("payBtn");
-  btn.textContent = "LANJUT PEMBAYARAN Rp " + nominal.toLocaleString("id-ID");
-  btn.classList.add("active");
+  const payBtn = document.getElementById("payBtn");
+  payBtn.textContent = "LANJUT PEMBAYARAN Rp " + nominal.toLocaleString("id-ID");
+  payBtn.classList.add("active");
 }
 
-document.getElementById("payBtn").addEventListener("click", function () {
+document.getElementById("payBtn").onclick = function() {
   if (!selected) return;
+  document.getElementById("confirmModal").style.display = "flex";
+};
 
-  this.classList.add("ripple");
+function closeModal() {
+  document.getElementById("confirmModal").style.display = "none";
+}
 
-  setTimeout(() => {
-    window.location.href = "https://sociabuzz.com/onlyfishit/donate";
-  }, 300);
-});
+function goPay() {
+  window.location.href = "https://sociabuzz.com/onlyfishit/donate";
+}
 </script>
 
 </body>
