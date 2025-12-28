@@ -33,6 +33,18 @@
       text-align: center;
       color: white;
       box-shadow: 0 10px 35px rgba(0,0,0,.4);
+      animation: fadeUp .6s ease;
+    }
+
+    @keyframes fadeUp {
+      from {opacity: 0; transform: translateY(20px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
+
+    .logo-wrap {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 10px;
     }
 
     .logo-wrap img {
@@ -40,24 +52,27 @@
       height: 90px;
       border-radius: 50%;
       border: 3px solid white;
-      margin-bottom: 10px;
+      background: #fff;
+      object-fit: cover;
     }
 
     h1 {
-      margin: 8px 0;
+      margin: 10px 0;
       font-size: 22px;
+      letter-spacing: 1px;
     }
 
     .warning {
       color: #ff6b6b;
       font-weight: 600;
+      margin: 8px 0;
       font-size: 13px;
     }
 
     .info {
       font-size: 13px;
-      margin: 10px 0;
-      opacity: .9;
+      opacity: 0.9;
+      margin-bottom: 15px;
     }
 
     .price button {
@@ -69,6 +84,7 @@
       font-weight: 600;
       cursor: pointer;
       background: #f1f1f1;
+      transition: .2s;
     }
 
     .price button.active {
@@ -79,14 +95,15 @@
     .pay-btn {
       margin-top: 15px;
       padding: 14px;
-      width: 100%;
       border-radius: 10px;
-      border: none;
       background: #2563eb;
       color: white;
-      font-weight: bold;
+      font-weight: 700;
+      border: none;
+      width: 100%;
       opacity: .5;
       pointer-events: none;
+      transition: .2s;
     }
 
     .pay-btn.active {
@@ -97,6 +114,7 @@
     .note {
       font-size: 12px;
       margin-top: 10px;
+      opacity: .9;
     }
 
     .social {
@@ -108,6 +126,32 @@
 
     .social img {
       width: 22px;
+    }
+
+    /* Animasi klik */
+    .ripple {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .ripple::after {
+      content: "";
+      position: absolute;
+      width: 120%;
+      height: 120%;
+      background: rgba(255,255,255,0.4);
+      border-radius: 50%;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) scale(0);
+      animation: ripple 0.5s ease-out;
+    }
+
+    @keyframes ripple {
+      to {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 0;
+      }
     }
   </style>
 </head>
@@ -163,9 +207,11 @@ function pilih(nominal) {
 
   document.querySelectorAll('.price button').forEach(btn => {
     btn.classList.remove('active');
+    btn.classList.remove('ripple');
   });
 
   event.target.classList.add('active');
+  event.target.classList.add('ripple');
 
   const btn = document.getElementById("payBtn");
   btn.textContent = "LANJUT PEMBAYARAN Rp " + nominal.toLocaleString("id-ID");
@@ -175,15 +221,11 @@ function pilih(nominal) {
 document.getElementById("payBtn").addEventListener("click", function () {
   if (!selected) return;
 
-  const ok = confirm(
-    "Kamu akan lanjut pembayaran Rp " +
-    selected.toLocaleString("id-ID") +
-    "\n\nPastikan nominal sudah benar."
-  );
+  this.classList.add("ripple");
 
-  if (ok) {
+  setTimeout(() => {
     window.location.href = "https://sociabuzz.com/onlyfishit/donate";
-  }
+  }, 300);
 });
 </script>
 
