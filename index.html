@@ -1,133 +1,172 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WANS FISHIT</title>
 
-  <title>WANS FISHIT</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+* {
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
 
-  <style>
-    * {
-      box-sizing: border-box;
-      font-family: 'Poppins', sans-serif;
-    }
+body {
+  margin: 0;
+  min-height: 100vh;
+  background:
+    linear-gradient(rgba(0,0,0,.45), rgba(0,0,0,.45)),
+    url("bg-roblox.jpg") center / cover no-repeat;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
 
-    body {
-      margin: 0;
-      min-height: 100vh;
-      background:
-        linear-gradient(rgba(0,0,0,.45), rgba(0,0,0,.45)),
-        url("bg-roblox.jpg") center / cover no-repeat;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 20px;
-    }
+/* CARD */
+.card {
+  width: 100%;
+  max-width: 380px;
+  background: rgba(255,255,255,0.25);
+  backdrop-filter: blur(14px);
+  border-radius: 18px;
+  padding: 24px 20px 26px;
+  text-align: center;
+  box-shadow: 0 20px 40px rgba(0,0,0,.4);
+  animation: fadeUp .5s ease;
+}
 
-    .card {
-      width: 100%;
-      max-width: 360px;
-      padding: 20px;
-      border-radius: 18px;
-      background: rgba(255,255,255,0.25);
-      backdrop-filter: blur(14px);
-      box-shadow: 0 12px 30px rgba(0,0,0,.35);
-      text-align: center;
-      color: #fff;
-    }
+@keyframes fadeUp {
+  from {opacity:0; transform: translateY(25px);}
+  to {opacity:1; transform: translateY(0);}
+}
 
-    .logo-wrap {
-      display: flex;
-      justify-content: center;
-      margin-bottom: 10px;
-    }
+/* LOGO */
+.logo-wrap {
+  width: 90px;
+  height: 90px;
+  margin: -65px auto 10px;
+  background: #fff;
+  border-radius: 50%;
+  padding: 5px;
+  box-shadow: 0 6px 18px rgba(0,0,0,.4);
+}
 
-    .logo-wrap img {
-      width: 80px;
-      height: 80px;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 3px solid rgba(255,255,255,.7);
-    }
+.logo-wrap img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+}
 
-    h1 {
-      margin: 6px 0;
-      font-size: 22px;
-    }
+/* TEXT */
+h1 {
+  color: #fff;
+  font-size: 22px;
+  margin: 6px 0;
+}
 
-    .warning {
-      color: #ff5b5b;
-      font-weight: 600;
-      font-size: 13px;
-      margin-bottom: 6px;
-    }
+.warning {
+  color: #ff5b5b;
+  font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
 
-    .info {
-      font-size: 12px;
-      opacity: .9;
-      margin-bottom: 12px;
-    }
+.info {
+  font-size: 13px;
+  color: #eee;
+  margin-bottom: 14px;
+}
 
-    .price button {
-      width: 100%;
-      padding: 11px;
-      margin: 6px 0;
-      border: none;
-      border-radius: 10px;
-      background: rgba(255,255,255,.9);
-      font-weight: 600;
-      cursor: pointer;
-    }
+/* BUTTON LIST */
+.price button {
+  width: 100%;
+  padding: 12px;
+  margin: 6px 0;
+  border-radius: 10px;
+  border: none;
+  background: rgba(255,255,255,0.9);
+  font-weight: 600;
+  cursor: pointer;
+  transition: .2s;
+}
 
-    .price button.active {
-      background: #2563eb;
-      color: white;
-    }
+.price button:hover {
+  background: #e5edff;
+}
 
-    .btn {
-      margin-top: 12px;
-      padding: 13px;
-      border-radius: 10px;
-      font-weight: 700;
-      background: #2563eb;
-      color: white;
-      opacity: .5;
-      pointer-events: none;
-    }
+.price button.active {
+  background: #2563eb;
+  color: white;
+}
 
-    .btn.active {
-      opacity: 1;
-      pointer-events: auto;
-    }
+/* PAY BUTTON */
+.btn {
+  margin-top: 15px;
+  padding: 14px;
+  border-radius: 12px;
+  background: #2563eb;
+  color: white;
+  font-weight: 700;
+  text-decoration: none;
+  display: block;
+  opacity: .5;
+  pointer-events: none;
+  transition: .3s;
+}
 
-    .note {
-      margin-top: 10px;
-      font-size: 12px;
-      opacity: .85;
-    }
+.btn.active {
+  opacity: 1;
+  pointer-events: auto;
+  animation: pulse 1.4s infinite;
+}
 
-    .contact-mini {
-      margin-top: 10px;
-      display: flex;
-      justify-content: center;
-      gap: 14px;
-    }
+@keyframes pulse {
+  0% { box-shadow: 0 0 0 0 rgba(37,99,235,.6); }
+  70% { box-shadow: 0 0 0 15px rgba(37,99,235,0); }
+  100% { box-shadow: 0 0 0 0 rgba(37,99,235,0); }
+}
 
-    .contact-mini img {
-      width: 22px;
-      height: 22px;
-    }
-  </style>
+/* FOOTER */
+.note {
+  font-size: 12px;
+  color: #eee;
+  margin-top: 10px;
+}
+
+.contact-mini {
+  margin-top: 12px;
+  display: flex;
+  justify-content: center;
+  gap: 14px;
+}
+
+.contact-mini a {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  color: white;
+  text-decoration: none;
+}
+
+.contact-mini img {
+  width: 18px;
+  height: 18px;
+}
+</style>
 </head>
 
 <body>
 
 <div class="card">
 
+  <!-- LOGO -->
   <div class="logo-wrap">
-    <img src="wanfish ava.jpeg" alt="Wans Fishit">
+    <img src="wanfish-ava.jpg" alt="Wans Fishit">
   </div>
 
   <h1>WANS FISHIT</h1>
@@ -136,7 +175,7 @@
 
   <div class="info">
     Isi nama TikTok saat pembayaran<br>
-    Sistem otomatis – nominal harus sesuai
+    Sistem otomatis — nominal harus sesuai
   </div>
 
   <div class="price">
@@ -147,7 +186,7 @@
     <button onclick="pilih(10000)">Foto E – Rp10.000</button>
   </div>
 
-  <div id="payBtn" class="btn">PILIH NOMINAL DULU</div>
+  <a id="payBtn" class="btn">PILIH NOMINAL DULU</a>
 
   <div class="note">
     Donate masuk = setuju aturan<br>
@@ -156,10 +195,10 @@
 
   <div class="contact-mini">
     <a href="https://wa.me/6281378831654" target="_blank">
-      <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png">
+      <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png"> WhatsApp
     </a>
     <a href="https://www.tiktok.com/@wansfish" target="_blank">
-      <img src="https://cdn-icons-png.flaticon.com/512/3046/3046121.png">
+      <img src="https://cdn-icons-png.flaticon.com/512/3046/3046121.png"> TikTok
     </a>
   </div>
 
@@ -170,22 +209,17 @@ let selectedNominal = 0;
 
 function pilih(nominal) {
   selectedNominal = nominal;
-  document.querySelectorAll('.price button')
-    .forEach(btn => btn.classList.remove('active'));
 
-  event.target.classList.add('active');
+  document.querySelectorAll(".price button").forEach(btn => {
+    btn.classList.remove("active");
+  });
+
+  event.target.classList.add("active");
 
   const btn = document.getElementById("payBtn");
   btn.textContent = "LANJUT PEMBAYARAN Rp " + nominal.toLocaleString("id-ID");
   btn.classList.add("active");
 }
-
-document.getElementById("payBtn").onclick = () => {
-  if (!selectedNominal) return;
-  if (confirm("Lanjut pembayaran?")) {
-    window.location.href = "https://sociabuzz.com/onlyfishit/donate";
-  }
-};
 </script>
 
 </body>
