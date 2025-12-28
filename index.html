@@ -1,220 +1,177 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>WANS FISHIT</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>WANS FISHIT</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
 
-<style>
-* {
-  box-sizing: border-box;
-  font-family: 'Poppins', sans-serif;
-}
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background:
+        linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)),
+        url("bg-roblox.jpg") center / cover no-repeat;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
 
-body {
-  margin: 0;
-  min-height: 100vh;
-  background:
-    linear-gradient(rgba(0,0,0,.45), rgba(0,0,0,.45)),
-    url("bg-roblox.jpg") center / cover no-repeat;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 20px;
-}
+    .card {
+      width: 100%;
+      max-width: 380px;
+      background: rgba(255,255,255,0.18);
+      backdrop-filter: blur(15px);
+      border-radius: 18px;
+      padding: 22px;
+      text-align: center;
+      color: white;
+      box-shadow: 0 10px 35px rgba(0,0,0,.4);
+    }
 
-/* CARD */
-.card {
-  width: 100%;
-  max-width: 380px;
-  background: rgba(255,255,255,0.25);
-  backdrop-filter: blur(14px);
-  border-radius: 18px;
-  padding: 24px 20px 26px;
-  text-align: center;
-  box-shadow: 0 20px 40px rgba(0,0,0,.4);
-  animation: fadeUp .5s ease;
-}
+    .logo-wrap {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 10px;
+    }
 
-@keyframes fadeUp {
-  from {opacity:0; transform: translateY(25px);}
-  to {opacity:1; transform: translateY(0);}
-}
+    .logo-wrap img {
+      width: 90px;
+      height: 90px;
+      border-radius: 50%;
+      border: 3px solid white;
+      object-fit: cover;
+      background: #fff;
+    }
 
-/* LOGO */
-.logo-wrap {
-  width: 90px;
-  height: 90px;
-  margin: -65px auto 10px;
-  background: #fff;
-  border-radius: 50%;
-  padding: 5px;
-  box-shadow: 0 6px 18px rgba(0,0,0,.4);
-}
+    h1 {
+      margin: 10px 0;
+      font-size: 22px;
+      letter-spacing: 1px;
+    }
 
-.logo-wrap img {
-  width: 100%;
-  height: 100%;
-  border-radius: 50%;
-  object-fit: cover;
-}
+    .warning {
+      color: #ff6b6b;
+      font-weight: 600;
+      margin: 8px 0;
+      font-size: 13px;
+    }
 
-/* TEXT */
-h1 {
-  color: #fff;
-  font-size: 22px;
-  margin: 6px 0;
-}
+    .info {
+      font-size: 13px;
+      opacity: 0.9;
+      margin-bottom: 15px;
+    }
 
-.warning {
-  color: #ff5b5b;
-  font-size: 13px;
-  font-weight: 600;
-  margin-bottom: 8px;
-}
+    .price button {
+      width: 100%;
+      padding: 12px;
+      margin: 6px 0;
+      border: none;
+      border-radius: 10px;
+      font-weight: 600;
+      cursor: pointer;
+      background: #f1f1f1;
+    }
 
-.info {
-  font-size: 13px;
-  color: #eee;
-  margin-bottom: 14px;
-}
+    .price button.active {
+      background: #2563eb;
+      color: white;
+    }
 
-/* BUTTON LIST */
-.price button {
-  width: 100%;
-  padding: 12px;
-  margin: 6px 0;
-  border-radius: 10px;
-  border: none;
-  background: rgba(255,255,255,0.9);
-  font-weight: 600;
-  cursor: pointer;
-  transition: .2s;
-}
+    .pay-btn {
+      margin-top: 15px;
+      padding: 14px;
+      border-radius: 10px;
+      background: #2563eb;
+      color: white;
+      font-weight: 700;
+      border: none;
+      width: 100%;
+      opacity: .5;
+      pointer-events: none;
+    }
 
-.price button:hover {
-  background: #e5edff;
-}
+    .pay-btn.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
 
-.price button.active {
-  background: #2563eb;
-  color: white;
-}
+    .note {
+      font-size: 12px;
+      margin-top: 10px;
+      opacity: .9;
+    }
 
-/* PAY BUTTON */
-.btn {
-  margin-top: 15px;
-  padding: 14px;
-  border-radius: 12px;
-  background: #2563eb;
-  color: white;
-  font-weight: 700;
-  text-decoration: none;
-  display: block;
-  opacity: .5;
-  pointer-events: none;
-  transition: .3s;
-}
+    .social {
+      margin-top: 10px;
+      display: flex;
+      justify-content: center;
+      gap: 14px;
+    }
 
-.btn.active {
-  opacity: 1;
-  pointer-events: auto;
-  animation: pulse 1.4s infinite;
-}
-
-@keyframes pulse {
-  0% { box-shadow: 0 0 0 0 rgba(37,99,235,.6); }
-  70% { box-shadow: 0 0 0 15px rgba(37,99,235,0); }
-  100% { box-shadow: 0 0 0 0 rgba(37,99,235,0); }
-}
-
-/* FOOTER */
-.note {
-  font-size: 12px;
-  color: #eee;
-  margin-top: 10px;
-}
-
-.contact-mini {
-  margin-top: 12px;
-  display: flex;
-  justify-content: center;
-  gap: 14px;
-}
-
-.contact-mini a {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  font-size: 13px;
-  color: white;
-  text-decoration: none;
-}
-
-.contact-mini img {
-  width: 18px;
-  height: 18px;
-}
-</style>
+    .social img {
+      width: 22px;
+    }
+  </style>
 </head>
 
 <body>
 
-<div class="card">
+  <div class="card">
 
-  <!-- LOGO -->
-  <div class="logo-wrap">
-    <img src="wanfish-ava.jpg" alt="Wans Fishit">
+    <div class="logo-wrap">
+      <img src="logo.png" alt="Wans Fishit">
+    </div>
+
+    <h1>WANS FISHIT</h1>
+
+    <div class="warning">⚠️ WAJIB BACA SEBELUM GACHA ⚠️</div>
+
+    <div class="info">
+      Isi nama TikTok saat pembayaran<br>
+      Sistem otomatis – nominal harus sesuai
+    </div>
+
+    <div class="price">
+      <button onclick="pilih(150000)">Foto A - Rp150.000</button>
+      <button onclick="pilih(100000)">Foto B - Rp100.000</button>
+      <button onclick="pilih(50000)">Foto C - Rp50.000</button>
+      <button onclick="pilih(25000)">Foto D - Rp25.000</button>
+      <button onclick="pilih(10000)">Foto E - Rp10.000</button>
+    </div>
+
+    <button id="payBtn" class="pay-btn">PILIH NOMINAL DULU</button>
+
+    <div class="note">
+      Donate masuk = setuju aturan<br>
+      Salah nominal → sistem manual
+    </div>
+
+    <div class="social">
+      <a href="https://wa.me/6281378831654" target="_blank">
+        <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png">
+      </a>
+      <a href="https://www.tiktok.com/@wansfish" target="_blank">
+        <img src="https://cdn-icons-png.flaticon.com/512/3046/3046121.png">
+      </a>
+    </div>
+
   </div>
-
-  <h1>WANS FISHIT</h1>
-
-  <div class="warning">⚠️ WAJIB BACA SEBELUM GACHA ⚠️</div>
-
-  <div class="info">
-    Isi nama TikTok saat pembayaran<br>
-    Sistem otomatis — nominal harus sesuai
-  </div>
-
-  <div class="price">
-    <button onclick="pilih(150000)">Foto A – Rp150.000</button>
-    <button onclick="pilih(100000)">Foto B – Rp100.000</button>
-    <button onclick="pilih(50000)">Foto C – Rp50.000</button>
-    <button onclick="pilih(25000)">Foto D – Rp25.000</button>
-    <button onclick="pilih(10000)">Foto E – Rp10.000</button>
-  </div>
-
-  <a id="payBtn" class="btn">PILIH NOMINAL DULU</a>
-
-  <div class="note">
-    Donate masuk = setuju aturan<br>
-    Salah nominal → sistem manual
-  </div>
-
-  <div class="contact-mini">
-    <a href="https://wa.me/6281378831654" target="_blank">
-      <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png"> WhatsApp
-    </a>
-    <a href="https://www.tiktok.com/@wansfish" target="_blank">
-      <img src="https://cdn-icons-png.flaticon.com/512/3046/3046121.png"> TikTok
-    </a>
-  </div>
-
-</div>
 
 <script>
-let selectedNominal = 0;
+let selected = 0;
 
 function pilih(nominal) {
-  selectedNominal = nominal;
-
-  document.querySelectorAll(".price button").forEach(btn => {
-    btn.classList.remove("active");
-  });
-
-  event.target.classList.add("active");
+  selected = nominal;
+  document.querySelectorAll('.price button').forEach(b => b.classList.remove('active'));
+  event.target.classList.add('active');
 
   const btn = document.getElementById("payBtn");
   btn.textContent = "LANJUT PEMBAYARAN Rp " + nominal.toLocaleString("id-ID");
