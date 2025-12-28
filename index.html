@@ -23,8 +23,10 @@
       display: flex;
       justify-content: center;
       align-items: center;
+      overflow: hidden;
     }
 
+    /* CARD */
     .card {
       width: 100%;
       max-width: 420px;
@@ -36,6 +38,18 @@
       box-shadow: 0 15px 40px rgba(0,0,0,0.35);
       text-align: center;
       color: #fff;
+      animation: fadeUp 0.9s ease;
+    }
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(40px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
     h1 {
@@ -53,10 +67,11 @@
 
     .info {
       font-size: 14px;
-      margin-bottom: 12px;
       opacity: 0.9;
+      margin-bottom: 12px;
     }
 
+    /* BUTTON LIST */
     .price button {
       width: 100%;
       margin: 7px 0;
@@ -73,11 +88,16 @@
       background: #dbeafe;
     }
 
+    .price button:active {
+      transform: scale(0.95);
+    }
+
     .price button.active {
       background: #2563eb;
       color: white;
     }
 
+    /* PAY BUTTON */
     .btn {
       margin-top: 20px;
       padding: 15px;
@@ -95,6 +115,13 @@
     .btn.active {
       opacity: 1;
       pointer-events: auto;
+      animation: pulse 1.5s infinite;
+    }
+
+    @keyframes pulse {
+      0% { box-shadow: 0 0 0 0 rgba(37, 99, 235, 0.7); }
+      70% { box-shadow: 0 0 0 15px rgba(37, 99, 235, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(37, 99, 235, 0); }
     }
 
     .note {
@@ -151,17 +178,20 @@
       btn.classList.add("active");
     }
 
-    document.getElementById("payBtn").addEventListener("click", function (e) {
+    document.getElementById("payBtn").addEventListener("click", function () {
       if (!selectedNominal) return;
 
-      const konfirmasi = confirm(
+      const confirmPay = confirm(
         "Kamu memilih nominal Rp " +
         selectedNominal.toLocaleString("id-ID") +
         "\n\nPastikan nominal sesuai sebelum lanjut."
       );
 
-      if (konfirmasi) {
-        window.open("https://sociabuzz.com/onlyfishit/donate", "_blank");
+      if (confirmPay) {
+        this.textContent = "MENGARAHKAN...";
+        setTimeout(() => {
+          window.open("https://sociabuzz.com/onlyfishit/donate", "_blank");
+        }, 700);
       }
     });
   </script>
