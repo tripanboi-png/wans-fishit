@@ -5,7 +5,6 @@
   <title>WANS FISHIT</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- Google Font -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
   <style>
@@ -32,6 +31,7 @@
       border-radius: 18px;
       background: rgba(255, 255, 255, 0.25);
       backdrop-filter: blur(15px);
+      -webkit-backdrop-filter: blur(15px);
       box-shadow: 0 15px 40px rgba(0,0,0,0.35);
       text-align: center;
       color: #fff;
@@ -43,10 +43,25 @@
       to { opacity: 1; transform: translateY(0); }
     }
 
+    /* LOGO */
+    .logo-wrap {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 15px;
+    }
+
+    .logo-wrap img {
+      width: 90px;
+      height: 90px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 4px solid rgba(255,255,255,0.6);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.4);
+    }
+
     h1 {
-      margin-bottom: 10px;
+      margin-bottom: 8px;
       font-weight: 700;
-      letter-spacing: 1px;
     }
 
     .warning {
@@ -87,13 +102,13 @@
       padding: 15px;
       display: block;
       border-radius: 10px;
+      text-decoration: none;
       font-weight: 700;
       background: #2563eb;
       color: white;
       opacity: 0.5;
       pointer-events: none;
       transition: 0.3s;
-      text-decoration: none;
     }
 
     .btn.active {
@@ -128,19 +143,12 @@
       gap: 6px;
       text-decoration: none;
       color: #fff;
-      opacity: 0.85;
-      transition: 0.2s;
-    }
-
-    .contact-mini a:hover {
-      opacity: 1;
-      transform: scale(1.05);
+      opacity: 0.9;
     }
 
     .contact-mini img {
-      width: 22px;
-      height: 22px;
-      border-radius: 50%;
+      width: 18px;
+      height: 18px;
     }
   </style>
 </head>
@@ -148,6 +156,11 @@
 <body>
 
   <div class="card">
+
+    <div class="logo-wrap">
+      <img src="wansfish_ava.jpeg" alt="Wans Fishit">
+    </div>
+
     <h1>WANS FISHIT</h1>
 
     <div class="warning">⚠️ WAJIB BACA SEBELUM GACHA ⚠️</div>
@@ -158,11 +171,11 @@
     </div>
 
     <div class="price">
-      <button onclick="pilih(this,150000)">Foto A – Rp150.000</button>
-      <button onclick="pilih(this,100000)">Foto B – Rp100.000</button>
-      <button onclick="pilih(this,50000)">Foto C – Rp50.000</button>
-      <button onclick="pilih(this,25000)">Foto D – Rp25.000</button>
-      <button onclick="pilih(this,10000)">Foto E – Rp10.000</button>
+      <button onclick="pilih(150000)">Foto A – Rp150.000</button>
+      <button onclick="pilih(100000)">Foto B – Rp100.000</button>
+      <button onclick="pilih(50000)">Foto C – Rp50.000</button>
+      <button onclick="pilih(25000)">Foto D – Rp25.000</button>
+      <button onclick="pilih(10000)">Foto E – Rp10.000</button>
     </div>
 
     <a id="payBtn" class="btn">PILIH NOMINAL DULU</a>
@@ -174,24 +187,25 @@
 
     <div class="contact-mini">
       <a href="https://wa.me/6281378831654" target="_blank">
-        <img src="wansfish_ava.jpeg"> WhatsApp
+        <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png"> WhatsApp
       </a>
       <a href="https://www.tiktok.com/@wansfish" target="_blank">
-        <img src="wansfish_ava.jpeg"> TikTok
+        <img src="https://cdn-icons-png.flaticon.com/512/3046/3046121.png"> TikTok
       </a>
     </div>
+
   </div>
 
   <script>
     let selectedNominal = 0;
 
-    function pilih(el, nominal) {
+    function pilih(nominal) {
       selectedNominal = nominal;
 
       document.querySelectorAll('.price button')
         .forEach(btn => btn.classList.remove('active'));
 
-      el.classList.add('active');
+      event.target.classList.add('active');
 
       const btn = document.getElementById("payBtn");
       btn.textContent = "LANJUT PEMBAYARAN Rp " + nominal.toLocaleString("id-ID");
@@ -201,7 +215,13 @@
     document.getElementById("payBtn").addEventListener("click", function () {
       if (!selectedNominal) return;
 
-      if (confirm("Kamu memilih Rp " + selectedNominal.toLocaleString("id-ID") + "\n\nPastikan nominal sesuai.")) {
+      const ok = confirm(
+        "Kamu memilih nominal Rp " +
+        selectedNominal.toLocaleString("id-ID") +
+        "\n\nPastikan nominal sesuai sebelum lanjut."
+      );
+
+      if (ok) {
         window.location.href = "https://sociabuzz.com/onlyfishit/donate";
       }
     });
