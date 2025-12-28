@@ -2,121 +2,127 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
   <title>WANS FISHIT</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
   <style>
     * {
       box-sizing: border-box;
       font-family: 'Poppins', sans-serif;
-      -webkit-tap-highlight-color: transparent;
     }
 
     body {
       margin: 0;
       min-height: 100vh;
-      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+      background:
+        linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)),
+        url("bg-roblox.jpg") center / cover no-repeat;
       display: flex;
       justify-content: center;
       align-items: center;
-      padding: 20px;
-      animation: fadeIn 1s ease;
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
     }
 
     .card {
       width: 100%;
-      max-width: 380px;
-      background: rgba(255,255,255,0.12);
-      backdrop-filter: blur(18px);
+      max-width: 420px;
+      padding: 25px;
       border-radius: 18px;
-      padding: 24px;
+      background: rgba(255, 255, 255, 0.25);
+      backdrop-filter: blur(15px);
+      -webkit-backdrop-filter: blur(15px);
+      box-shadow: 0 15px 40px rgba(0,0,0,0.35);
+      text-align: center;
       color: #fff;
-      box-shadow: 0 15px 40px rgba(0,0,0,.35);
-      animation: pop 0.6s ease;
+      animation: fadeUp 0.8s ease;
     }
 
-    @keyframes pop {
-      0% { transform: scale(0.95); opacity: 0; }
-      100% { transform: scale(1); opacity: 1; }
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(40px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
     h1 {
-      text-align: center;
+      margin-bottom: 10px;
       font-weight: 700;
       letter-spacing: 1px;
-      margin-bottom: 8px;
     }
 
     .warning {
-      text-align: center;
-      color: #ffb703;
-      font-size: 14px;
-      margin-bottom: 12px;
+      color: #ff5b5b;
+      font-weight: 600;
+      margin: 10px 0;
     }
 
     .info {
-      font-size: 13px;
-      text-align: center;
-      opacity: 0.85;
-      margin-bottom: 18px;
+      font-size: 14px;
+      opacity: 0.9;
+      margin-bottom: 12px;
     }
 
     .price button {
       width: 100%;
+      margin: 7px 0;
+      padding: 13px;
       border: none;
-      border-radius: 12px;
-      padding: 14px;
-      margin-bottom: 10px;
-      font-size: 15px;
+      border-radius: 10px;
+      background: rgba(255,255,255,0.85);
       font-weight: 600;
       cursor: pointer;
-      background: rgba(255,255,255,0.85);
-      transition: 0.25s;
+      transition: 0.2s;
     }
 
     .price button:hover {
-      transform: scale(1.02);
+      background: #dbeafe;
+    }
+
+    .price button:active {
+      transform: scale(0.95);
     }
 
     .price button.active {
-      background: linear-gradient(135deg, #00c6ff, #0072ff);
-      color: #fff;
-      box-shadow: 0 0 15px rgba(0,114,255,0.6);
+      background: #2563eb;
+      color: white;
     }
 
-    .pay-btn {
-      margin-top: 14px;
-      width: 100%;
+    .btn {
+      margin-top: 20px;
       padding: 15px;
-      border-radius: 14px;
-      border: none;
+      display: block;
+      border-radius: 10px;
+      text-decoration: none;
       font-weight: 700;
-      font-size: 15px;
-      background: #00c6ff;
-      color: #fff;
-      cursor: pointer;
-      opacity: 0.6;
+      background: #2563eb;
+      color: white;
+      opacity: 0.5;
+      pointer-events: none;
       transition: 0.3s;
     }
 
-    .pay-btn.active {
+    .btn.active {
       opacity: 1;
-      background: linear-gradient(135deg, #00c6ff, #0072ff);
-      box-shadow: 0 0 20px rgba(0,114,255,0.6);
+      pointer-events: auto;
+      animation: pulse 1.5s infinite;
+    }
+
+    @keyframes pulse {
+      0% { box-shadow: 0 0 0 0 rgba(37,99,235,.7); }
+      70% { box-shadow: 0 0 0 15px rgba(37,99,235,0); }
+      100% { box-shadow: 0 0 0 0 rgba(37,99,235,0); }
     }
 
     .note {
-      font-size: 12px;
-      opacity: 0.8;
-      text-align: center;
       margin-top: 10px;
+      font-size: 13px;
+      opacity: 0.9;
     }
   </style>
 </head>
@@ -125,45 +131,59 @@
 
   <div class="card">
     <h1>WANS FISHIT</h1>
+
     <div class="warning">⚠️ WAJIB BACA SEBELUM GACHA ⚠️</div>
+
     <div class="info">
-      Isi nama TikTok saat pembayaran <br>
-      Nominal harus sesuai
+      Isi nama TikTok saat pembayaran<br>
+      Sistem otomatis – nominal harus sesuai
     </div>
 
     <div class="price">
-      <button onclick="selectNominal(150000)">Foto A – Rp150.000</button>
-      <button onclick="selectNominal(100000)">Foto B – Rp100.000</button>
-      <button onclick="selectNominal(50000)">Foto C – Rp50.000</button>
-      <button onclick="selectNominal(25000)">Foto D – Rp25.000</button>
-      <button onclick="selectNominal(10000)">Foto E – Rp10.000</button>
+      <button onclick="pilih(150000)">Foto A – Rp150.000</button>
+      <button onclick="pilih(100000)">Foto B – Rp100.000</button>
+      <button onclick="pilih(50000)">Foto C – Rp50.000</button>
+      <button onclick="pilih(25000)">Foto D – Rp25.000</button>
+      <button onclick="pilih(10000)">Foto E – Rp10.000</button>
     </div>
 
-    <button id="payBtn" class="pay-btn">PILIH NOMINAL</button>
+    <a id="payBtn" class="btn">PILIH NOMINAL DULU</a>
 
     <div class="note">
-      Pembayaran via Sociabuzz<br>
-      Salah nominal = sistem manual
+      Donate masuk = setuju aturan<br>
+      Salah nominal → sistem manual
     </div>
   </div>
 
   <script>
-    let selected = 0;
+    let selectedNominal = 0;
 
-    function selectNominal(val) {
-      selected = val;
-      document.querySelectorAll('.price button').forEach(b => b.classList.remove('active'));
+    function pilih(nominal) {
+      selectedNominal = nominal;
+
+      document.querySelectorAll('.price button')
+        .forEach(btn => btn.classList.remove('active'));
+
       event.target.classList.add('active');
 
-      const btn = document.getElementById('payBtn');
-      btn.textContent = 'LANJUT PEMBAYARAN Rp ' + val.toLocaleString('id-ID');
-      btn.classList.add('active');
+      const btn = document.getElementById("payBtn");
+      btn.textContent = "LANJUT PEMBAYARAN Rp " + nominal.toLocaleString("id-ID");
+      btn.classList.add("active");
     }
 
-    document.getElementById('payBtn').onclick = function () {
-      if (!selected) return;
-      window.location.href = "https://s.id/wansfishit";
-    };
+    document.getElementById("payBtn").addEventListener("click", function () {
+      if (!selectedNominal) return;
+
+      const ok = confirm(
+        "Kamu memilih nominal Rp " +
+        selectedNominal.toLocaleString("id-ID") +
+        "\n\nPastikan nominal sesuai sebelum lanjut."
+      );
+
+      if (ok) {
+        window.location.href = "https://sociabuzz.com/onlyfishit/donate";
+      }
+    });
   </script>
 
 </body>
