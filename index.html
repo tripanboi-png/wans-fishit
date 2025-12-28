@@ -1,135 +1,193 @@
-* {
-  box-sizing: border-box;
-  font-family: 'Poppins', sans-serif;
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>WANS FISHIT</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background:
+        linear-gradient(rgba(0,0,0,.45), rgba(0,0,0,.45)),
+        url("bg-roblox.jpg") center / cover no-repeat;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+
+    .card {
+      width: 100%;
+      max-width: 360px;
+      padding: 20px;
+      border-radius: 18px;
+      background: rgba(255,255,255,0.25);
+      backdrop-filter: blur(14px);
+      box-shadow: 0 12px 30px rgba(0,0,0,.35);
+      text-align: center;
+      color: #fff;
+    }
+
+    .logo-wrap {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 10px;
+    }
+
+    .logo-wrap img {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid rgba(255,255,255,.7);
+    }
+
+    h1 {
+      margin: 6px 0;
+      font-size: 22px;
+    }
+
+    .warning {
+      color: #ff5b5b;
+      font-weight: 600;
+      font-size: 13px;
+      margin-bottom: 6px;
+    }
+
+    .info {
+      font-size: 12px;
+      opacity: .9;
+      margin-bottom: 12px;
+    }
+
+    .price button {
+      width: 100%;
+      padding: 11px;
+      margin: 6px 0;
+      border: none;
+      border-radius: 10px;
+      background: rgba(255,255,255,.9);
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    .price button.active {
+      background: #2563eb;
+      color: white;
+    }
+
+    .btn {
+      margin-top: 12px;
+      padding: 13px;
+      border-radius: 10px;
+      font-weight: 700;
+      background: #2563eb;
+      color: white;
+      opacity: .5;
+      pointer-events: none;
+    }
+
+    .btn.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .note {
+      margin-top: 10px;
+      font-size: 12px;
+      opacity: .85;
+    }
+
+    .contact-mini {
+      margin-top: 10px;
+      display: flex;
+      justify-content: center;
+      gap: 14px;
+    }
+
+    .contact-mini img {
+      width: 22px;
+      height: 22px;
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="card">
+
+  <div class="logo-wrap">
+    <img src="wanfish ava.jpeg" alt="Wans Fishit">
+  </div>
+
+  <h1>WANS FISHIT</h1>
+
+  <div class="warning">⚠️ WAJIB BACA SEBELUM GACHA ⚠️</div>
+
+  <div class="info">
+    Isi nama TikTok saat pembayaran<br>
+    Sistem otomatis – nominal harus sesuai
+  </div>
+
+  <div class="price">
+    <button onclick="pilih(150000)">Foto A – Rp150.000</button>
+    <button onclick="pilih(100000)">Foto B – Rp100.000</button>
+    <button onclick="pilih(50000)">Foto C – Rp50.000</button>
+    <button onclick="pilih(25000)">Foto D – Rp25.000</button>
+    <button onclick="pilih(10000)">Foto E – Rp10.000</button>
+  </div>
+
+  <div id="payBtn" class="btn">PILIH NOMINAL DULU</div>
+
+  <div class="note">
+    Donate masuk = setuju aturan<br>
+    Salah nominal → sistem manual
+  </div>
+
+  <div class="contact-mini">
+    <a href="https://wa.me/6281378831654" target="_blank">
+      <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png">
+    </a>
+    <a href="https://www.tiktok.com/@wansfish" target="_blank">
+      <img src="https://cdn-icons-png.flaticon.com/512/3046/3046121.png">
+    </a>
+  </div>
+
+</div>
+
+<script>
+let selectedNominal = 0;
+
+function pilih(nominal) {
+  selectedNominal = nominal;
+  document.querySelectorAll('.price button')
+    .forEach(btn => btn.classList.remove('active'));
+
+  event.target.classList.add('active');
+
+  const btn = document.getElementById("payBtn");
+  btn.textContent = "LANJUT PEMBAYARAN Rp " + nominal.toLocaleString("id-ID");
+  btn.classList.add("active");
 }
 
-body {
-  margin: 0;
-  min-height: 100vh;
-  background:
-    linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)),
-    url("bg-roblox.jpg") center / cover no-repeat;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 20px;
-}
-
-/* CARD */
-.card {
-  width: 100%;
-  max-width: 360px;
-  padding: 20px;
-  border-radius: 18px;
-  background: rgba(255,255,255,0.25);
-  backdrop-filter: blur(14px);
-  box-shadow: 0 12px 30px rgba(0,0,0,.35);
-  text-align: center;
-  color: #fff;
-}
-
-/* LOGO */
-.logo-wrap {
-  display: flex;
-  justify-content: center;
-  margin-bottom: 10px;
-}
-
-.logo-wrap img {
-  width: 80px;
-  height: 80px;
-  border-radius: 50%;
-  object-fit: cover;
-  border: 3px solid rgba(255,255,255,0.7);
-}
-
-/* TITLE */
-h1 {
-  margin: 8px 0 4px;
-  font-size: 22px;
-  font-weight: 700;
-}
-
-.warning {
-  color: #ff5b5b;
-  font-size: 13px;
-  font-weight: 600;
-  margin-bottom: 6px;
-}
-
-.info {
-  font-size: 12px;
-  opacity: .9;
-  margin-bottom: 10px;
-}
-
-/* BUTTON LIST */
-.price button {
-  width: 100%;
-  padding: 11px;
-  margin: 6px 0;
-  border: none;
-  border-radius: 10px;
-  background: rgba(255,255,255,0.9);
-  font-weight: 600;
-  cursor: pointer;
-  transition: 0.2s;
-}
-
-.price button.active {
-  background: #2563eb;
-  color: white;
-}
-
-.price button:hover {
-  background: #e0e7ff;
-}
-
-/* ACTION BUTTON */
-.btn {
-  margin-top: 12px;
-  padding: 13px;
-  border-radius: 10px;
-  font-weight: 700;
-  background: #2563eb;
-  color: white;
-  opacity: .5;
-  pointer-events: none;
-}
-
-.btn.active {
-  opacity: 1;
-  pointer-events: auto;
-}
-
-/* FOOTER */
-.note {
-  margin-top: 10px;
-  font-size: 12px;
-  opacity: .85;
-}
-
-/* CONTACT ICON */
-.contact-mini {
-  margin-top: 10px;
-  display: flex;
-  justify-content: center;
-  gap: 14px;
-}
-
-.contact-mini img {
-  width: 22px;
-  height: 22px;
-}
-
-/* MOBILE FIX */
-@media (max-height: 700px) {
-  .card {
-    padding: 16px;
+document.getElementById("payBtn").onclick = () => {
+  if (!selectedNominal) return;
+  if (confirm("Lanjut pembayaran?")) {
+    window.location.href = "https://sociabuzz.com/onlyfishit/donate";
   }
+};
+</script>
 
-  .price button {
-    padding: 10px;
-  }
-}
+</body>
+</html>
 
