@@ -32,7 +32,6 @@
       border-radius: 18px;
       background: rgba(255, 255, 255, 0.25);
       backdrop-filter: blur(15px);
-      -webkit-backdrop-filter: blur(15px);
       box-shadow: 0 15px 40px rgba(0,0,0,0.35);
       text-align: center;
       color: #fff;
@@ -88,13 +87,13 @@
       padding: 15px;
       display: block;
       border-radius: 10px;
-      text-decoration: none;
       font-weight: 700;
       background: #2563eb;
       color: white;
       opacity: 0.5;
       pointer-events: none;
       transition: 0.3s;
+      text-decoration: none;
     }
 
     .btn.active {
@@ -119,7 +118,7 @@
       margin-top: 14px;
       display: flex;
       justify-content: center;
-      gap: 12px;
+      gap: 14px;
       font-size: 13px;
     }
 
@@ -139,8 +138,9 @@
     }
 
     .contact-mini img {
-      width: 18px;
-      height: 18px;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
     }
   </style>
 </head>
@@ -158,11 +158,11 @@
     </div>
 
     <div class="price">
-      <button onclick="pilih(150000)">Foto A – Rp150.000</button>
-      <button onclick="pilih(100000)">Foto B – Rp100.000</button>
-      <button onclick="pilih(50000)">Foto C – Rp50.000</button>
-      <button onclick="pilih(25000)">Foto D – Rp25.000</button>
-      <button onclick="pilih(10000)">Foto E – Rp10.000</button>
+      <button onclick="pilih(this,150000)">Foto A – Rp150.000</button>
+      <button onclick="pilih(this,100000)">Foto B – Rp100.000</button>
+      <button onclick="pilih(this,50000)">Foto C – Rp50.000</button>
+      <button onclick="pilih(this,25000)">Foto D – Rp25.000</button>
+      <button onclick="pilih(this,10000)">Foto E – Rp10.000</button>
     </div>
 
     <a id="payBtn" class="btn">PILIH NOMINAL DULU</a>
@@ -174,10 +174,10 @@
 
     <div class="contact-mini">
       <a href="https://wa.me/6281378831654" target="_blank">
-        <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png"> WhatsApp
+        <img src="wansfish_ava.jpeg"> WhatsApp
       </a>
       <a href="https://www.tiktok.com/@wansfish" target="_blank">
-        <img src="https://cdn-icons-png.flaticon.com/512/3046/3046121.png"> TikTok
+        <img src="wansfish_ava.jpeg"> TikTok
       </a>
     </div>
   </div>
@@ -185,13 +185,13 @@
   <script>
     let selectedNominal = 0;
 
-    function pilih(nominal) {
+    function pilih(el, nominal) {
       selectedNominal = nominal;
 
       document.querySelectorAll('.price button')
         .forEach(btn => btn.classList.remove('active'));
 
-      event.target.classList.add('active');
+      el.classList.add('active');
 
       const btn = document.getElementById("payBtn");
       btn.textContent = "LANJUT PEMBAYARAN Rp " + nominal.toLocaleString("id-ID");
@@ -201,13 +201,7 @@
     document.getElementById("payBtn").addEventListener("click", function () {
       if (!selectedNominal) return;
 
-      const ok = confirm(
-        "Kamu memilih nominal Rp " +
-        selectedNominal.toLocaleString("id-ID") +
-        "\n\nPastikan nominal sesuai sebelum lanjut."
-      );
-
-      if (ok) {
+      if (confirm("Kamu memilih Rp " + selectedNominal.toLocaleString("id-ID") + "\n\nPastikan nominal sesuai.")) {
         window.location.href = "https://sociabuzz.com/onlyfishit/donate";
       }
     });
@@ -215,5 +209,4 @@
 
 </body>
 </html>
-
 
