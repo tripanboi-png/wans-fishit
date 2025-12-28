@@ -10,14 +10,16 @@
 
   <style>
     * {
-      font-family: 'Poppins', sans-serif;
       box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
     }
 
     body {
       margin: 0;
       min-height: 100vh;
-      background: linear-gradient(135deg, #dbeafe, #fef3c7);
+      background:
+        linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)),
+        url("bg-roblox.jpg") center / cover no-repeat;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -27,47 +29,49 @@
       width: 100%;
       max-width: 420px;
       padding: 25px;
-      border-radius: 16px;
-      background: rgba(255, 255, 255, 0.65);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+      border-radius: 18px;
+      background: rgba(255, 255, 255, 0.25);
+      backdrop-filter: blur(15px);
+      -webkit-backdrop-filter: blur(15px);
+      box-shadow: 0 15px 40px rgba(0,0,0,0.35);
       text-align: center;
+      color: #111;
     }
 
     h1 {
       margin-bottom: 10px;
       font-weight: 700;
-      color: #2f3e46;
       letter-spacing: 1px;
+      color: #ffffff;
+      text-shadow: 0 2px 5px rgba(0,0,0,.6);
     }
 
     .warning {
-      color: #c0392b;
+      color: #ff4d4d;
       font-weight: 600;
-      margin: 12px 0;
+      margin: 10px 0;
     }
 
     .info {
       font-size: 14px;
-      color: #444;
+      color: #f1f1f1;
       margin-bottom: 10px;
     }
 
     .price button {
       width: 100%;
-      margin: 6px 0;
+      margin: 7px 0;
       padding: 13px;
       border: none;
       border-radius: 10px;
-      background: rgba(255,255,255,0.8);
+      background: rgba(255,255,255,0.85);
       font-weight: 600;
       cursor: pointer;
-      transition: 0.2s ease;
+      transition: 0.2s;
     }
 
     .price button:hover {
-      background: #e0f2fe;
+      background: #dbeafe;
     }
 
     .price button.active {
@@ -97,7 +101,7 @@
     .note {
       margin-top: 10px;
       font-size: 13px;
-      color: #555;
+      color: #e5e7eb;
     }
   </style>
 </head>
@@ -110,7 +114,7 @@
     <div class="warning">⚠️ WAJIB BACA SEBELUM GACHA ⚠️</div>
 
     <div class="info">
-      Isi nama TikTok saat pembayaran <br>
+      Isi nama TikTok saat pembayaran<br>
       Sistem otomatis (nominal harus sesuai)
     </div>
 
@@ -134,12 +138,14 @@
 
   <script>
     function pilih(nominal) {
-      document.querySelectorAll('.price button').forEach(btn => btn.classList.remove('active'));
+      document.querySelectorAll('.price button')
+        .forEach(btn => btn.classList.remove('active'));
+
       event.target.classList.add('active');
 
       const btn = document.getElementById("payBtn");
       btn.href = "https://sociabuzz.com/onlyfishit/donate";
-      btn.innerText = "LANJUT PEMBAYARAN Rp" + nominal.toLocaleString("id-ID");
+      btn.textContent = "LANJUT PEMBAYARAN Rp " + nominal.toLocaleString("id-ID");
       btn.classList.add("active");
     }
   </script>
