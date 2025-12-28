@@ -5,108 +5,145 @@
   <title>WANS FISHIT</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
   <style>
+    * {
+      font-family: 'Poppins', sans-serif;
+      box-sizing: border-box;
+    }
+
     body {
       margin: 0;
-      font-family: Arial, sans-serif;
-      background: #f4efe9;
+      min-height: 100vh;
+      background: linear-gradient(135deg, #dbeafe, #fef3c7);
       display: flex;
       justify-content: center;
+      align-items: center;
     }
 
     .card {
+      width: 100%;
       max-width: 420px;
-      background: #f9f5ef;
       padding: 25px;
-      margin: 20px;
-      border-radius: 12px;
+      border-radius: 16px;
+      background: rgba(255, 255, 255, 0.65);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.15);
       text-align: center;
-      box-shadow: 0 0 10px rgba(0,0,0,.1);
     }
 
     h1 {
-      color: #6b7a7a;
       margin-bottom: 10px;
-    }
-
-    .lock {
-      font-size: 22px;
-      margin: 10px 0;
+      font-weight: 700;
+      color: #2f3e46;
+      letter-spacing: 1px;
     }
 
     .warning {
       color: #c0392b;
-      font-weight: bold;
-      margin: 10px 0;
+      font-weight: 600;
+      margin: 12px 0;
     }
 
-    .text {
-      font-size: 15px;
-      margin: 8px 0;
+    .info {
+      font-size: 14px;
+      color: #444;
+      margin-bottom: 10px;
     }
 
-    .price {
-      margin: 15px 0;
-      font-weight: bold;
-      text-align: left;
+    .price button {
+      width: 100%;
+      margin: 6px 0;
+      padding: 13px;
+      border: none;
+      border-radius: 10px;
+      background: rgba(255,255,255,0.8);
+      font-weight: 600;
+      cursor: pointer;
+      transition: 0.2s ease;
     }
 
-    .price div {
-      margin: 5px 0;
+    .price button:hover {
+      background: #e0f2fe;
+    }
+
+    .price button.active {
+      background: #2563eb;
+      color: white;
     }
 
     .btn {
       margin-top: 20px;
-      background: #6b7a7a;
-      color: white;
       padding: 15px;
-      border-radius: 8px;
-      text-decoration: none;
       display: block;
-      font-weight: bold;
+      border-radius: 10px;
+      text-decoration: none;
+      font-weight: 700;
+      background: #2563eb;
+      color: white;
+      opacity: 0.5;
+      pointer-events: none;
+      transition: 0.3s;
     }
 
-    .btn:hover {
-      background: #556363;
+    .btn.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .note {
+      margin-top: 10px;
+      font-size: 13px;
+      color: #555;
     }
   </style>
 </head>
 
 <body>
+
   <div class="card">
     <h1>WANS FISHIT</h1>
 
-    <div class="lock">🔒 SISTEM DONATE NOMINAL PAS</div>
-
     <div class="warning">⚠️ WAJIB BACA SEBELUM GACHA ⚠️</div>
 
-    <div class="text">
-      DI MENU PEMBAYARAN ISI DENGAN NAMA TIKTOK ANDA
-    </div>
-
-    <div class="lock">🔒 SISTEM DONATE NOMINAL PAS</div>
-
-    <div class="text">
-      Donate HARUS sesuai nominal, karena menggunakan sistem otomatis
+    <div class="info">
+      Isi nama TikTok saat pembayaran <br>
+      Sistem otomatis (nominal harus sesuai)
     </div>
 
     <div class="price">
-      🎰 <b>HARGA GACHA</b><br><br>
-      Foto A → Rp150.000<br>
-      Foto B → Rp100.000<br>
-      Foto C → Rp50.000<br>
-      Foto D → Rp25.000<br>
-      Foto E → Rp10.000
+      <button onclick="pilih(150000)">Foto A – Rp150.000</button>
+      <button onclick="pilih(100000)">Foto B – Rp100.000</button>
+      <button onclick="pilih(50000)">Foto C – Rp50.000</button>
+      <button onclick="pilih(25000)">Foto D – Rp25.000</button>
+      <button onclick="pilih(10000)">Foto E – Rp10.000</button>
     </div>
 
-    <div class="text">
-      📌 Donate masuk = dianggap setuju aturan<br>
-      Salah nominal = menggunakan sistem manual
-    </div>
-
-    <a class="btn" href="https://sociabuzz.com/onlyfishit/donate" target="_blank">
-      KLIK INI UNTUK PEMBAYARAN
+    <a id="payBtn" class="btn" href="#" target="_blank">
+      PILIH NOMINAL DULU
     </a>
+
+    <div class="note">
+      Donate masuk = setuju aturan<br>
+      Salah nominal → sistem manual
+    </div>
   </div>
+
+  <script>
+    function pilih(nominal) {
+      document.querySelectorAll('.price button').forEach(btn => btn.classList.remove('active'));
+      event.target.classList.add('active');
+
+      const btn = document.getElementById("payBtn");
+      btn.href = "https://sociabuzz.com/onlyfishit/donate";
+      btn.innerText = "LANJUT PEMBAYARAN Rp" + nominal.toLocaleString("id-ID");
+      btn.classList.add("active");
+    }
+  </script>
+
 </body>
 </html>
+
