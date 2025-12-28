@@ -15,19 +15,18 @@ body {
   margin: 0;
   min-height: 100vh;
   background:
-    linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)),
+    linear-gradient(rgba(0,0,0,.45), rgba(0,0,0,.45)),
     url("bg-roblox.jpg") center / cover no-repeat;
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 20px;
 }
 
 /* CARD */
 .card {
   width: 100%;
   max-width: 380px;
-  background: rgba(255,255,255,0.18);
+  background: rgba(255,255,255,.18);
   backdrop-filter: blur(15px);
   border-radius: 18px;
   padding: 22px;
@@ -37,45 +36,39 @@ body {
 }
 
 /* LOGO */
-.logo-wrap {
-  display: flex;
-  justify-content: center;
-  margin-bottom: 10px;
-}
-
 .logo-wrap img {
   width: 90px;
   height: 90px;
   border-radius: 50%;
   border: 3px solid white;
-  object-fit: cover;
+  background: white;
+  margin-bottom: 10px;
 }
 
-/* TEXT */
 h1 {
-  margin: 10px 0;
+  margin: 6px 0;
   font-size: 22px;
 }
 
 .warning {
   color: #ff6b6b;
   font-weight: 600;
-  margin: 8px 0;
+  font-size: 13px;
 }
 
 .info {
   font-size: 13px;
   opacity: .9;
-  margin-bottom: 15px;
+  margin-bottom: 12px;
 }
 
-/* BUTTON LIST */
+/* BUTTON */
 .price button {
   width: 100%;
   padding: 12px;
   margin: 6px 0;
-  border: none;
   border-radius: 10px;
+  border: none;
   font-weight: 600;
   cursor: pointer;
   background: #f1f1f1;
@@ -86,15 +79,14 @@ h1 {
   color: white;
 }
 
-/* PAY BUTTON */
 .pay-btn {
   margin-top: 15px;
   padding: 14px;
   border-radius: 10px;
-  border: none;
   background: #2563eb;
   color: white;
-  font-weight: 700;
+  font-weight: bold;
+  border: none;
   width: 100%;
   opacity: .5;
   pointer-events: none;
@@ -103,53 +95,47 @@ h1 {
 .pay-btn.active {
   opacity: 1;
   pointer-events: auto;
+  animation: pulse 1.5s infinite;
 }
 
-/* NOTE */
-.note {
-  font-size: 12px;
-  margin-top: 10px;
-  opacity: .9;
-}
-
-/* SOCIAL */
 .social {
   margin-top: 10px;
   display: flex;
   justify-content: center;
-  gap: 14px;
+  gap: 15px;
 }
 
 .social img {
   width: 22px;
 }
 
-/* MODAL */
-.modal {
+/* POPUP */
+.popup-bg {
   position: fixed;
   inset: 0;
-  background: rgba(0,0,0,.7);
+  background: rgba(0,0,0,.6);
   display: none;
   justify-content: center;
   align-items: center;
-  z-index: 999;
+  z-index: 99;
 }
 
-.modal-box {
+.popup {
   background: #1f2937;
-  color: white;
-  padding: 20px;
-  border-radius: 14px;
-  width: 90%;
+  padding: 25px;
+  border-radius: 15px;
+  width: 85%;
   max-width: 320px;
   text-align: center;
+  color: white;
+  animation: pop .4s ease;
 }
 
-.modal button {
-  margin-top: 10px;
-  padding: 10px;
+.popup button {
   width: 100%;
-  border-radius: 8px;
+  margin-top: 10px;
+  padding: 12px;
+  border-radius: 10px;
   border: none;
   font-weight: bold;
 }
@@ -159,9 +145,22 @@ h1 {
   color: white;
 }
 
-.btn-ok {
+.btn-go {
   background: #2563eb;
   color: white;
+}
+
+/* ANIMASI */
+@keyframes pop {
+  0% { transform: scale(.6); opacity: 0; }
+  70% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+@keyframes pulse {
+  0% { box-shadow: 0 0 0 0 rgba(37,99,235,.6); }
+  70% { box-shadow: 0 0 0 15px rgba(37,99,235,0); }
+  100% { box-shadow: 0 0 0 0 rgba(37,99,235,0); }
 }
 </style>
 </head>
@@ -171,7 +170,7 @@ h1 {
 <div class="card">
 
   <div class="logo-wrap">
-    <img src="logo.png" alt="Wans Fishit">
+    <img src="logo.png">
   </div>
 
   <h1>WANS FISHIT</h1>
@@ -184,19 +183,14 @@ h1 {
   </div>
 
   <div class="price">
-    <button onclick="pilih(150000)">Foto A – Rp150.000</button>
-    <button onclick="pilih(100000)">Foto B – Rp100.000</button>
-    <button onclick="pilih(50000)">Foto C – Rp50.000</button>
-    <button onclick="pilih(25000)">Foto D – Rp25.000</button>
-    <button onclick="pilih(10000)">Foto E – Rp10.000</button>
+    <button onclick="pilih(150000)">Foto A - Rp150.000</button>
+    <button onclick="pilih(100000)">Foto B - Rp100.000</button>
+    <button onclick="pilih(50000)">Foto C - Rp50.000</button>
+    <button onclick="pilih(25000)">Foto D - Rp25.000</button>
+    <button onclick="pilih(10000)">Foto E - Rp10.000</button>
   </div>
 
   <button id="payBtn" class="pay-btn">PILIH NOMINAL DULU</button>
-
-  <div class="note">
-    Donate masuk = setuju aturan<br>
-    Salah nominal → sistem manual
-  </div>
 
   <div class="social">
     <a href="https://wa.me/6281378831654" target="_blank">
@@ -209,36 +203,36 @@ h1 {
 
 </div>
 
-<!-- MODAL -->
-<div class="modal" id="confirmModal">
-  <div class="modal-box">
+<!-- POPUP -->
+<div class="popup-bg" id="popup">
+  <div class="popup">
     <h3>⚠️ Konfirmasi</h3>
     <p>Pastikan nominal sesuai sebelum melanjutkan.</p>
-    <button class="btn-cancel" onclick="closeModal()">Batal</button>
-    <button class="btn-ok" onclick="goPay()">Lanjutkan</button>
+    <button class="btn-cancel" onclick="closePopup()">Batal</button>
+    <button class="btn-go" onclick="goPay()">Lanjutkan</button>
   </div>
 </div>
 
 <script>
-let selected = 0;
+let nominal = 0;
 
-function pilih(nominal) {
-  selected = nominal;
-  document.querySelectorAll('.price button').forEach(btn => btn.classList.remove('active'));
-  event.target.classList.add('active');
+function pilih(n) {
+  nominal = n;
+  document.querySelectorAll(".price button").forEach(b => b.classList.remove("active"));
+  event.target.classList.add("active");
 
-  const payBtn = document.getElementById("payBtn");
-  payBtn.textContent = "LANJUT PEMBAYARAN Rp " + nominal.toLocaleString("id-ID");
-  payBtn.classList.add("active");
+  const btn = document.getElementById("payBtn");
+  btn.textContent = "LANJUT PEMBAYARAN Rp " + n.toLocaleString("id-ID");
+  btn.classList.add("active");
 }
 
-document.getElementById("payBtn").onclick = function() {
-  if (!selected) return;
-  document.getElementById("confirmModal").style.display = "flex";
+document.getElementById("payBtn").onclick = () => {
+  if (!nominal) return;
+  document.getElementById("popup").style.display = "flex";
 };
 
-function closeModal() {
-  document.getElementById("confirmModal").style.display = "none";
+function closePopup() {
+  document.getElementById("popup").style.display = "none";
 }
 
 function goPay() {
